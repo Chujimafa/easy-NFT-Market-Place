@@ -1,0 +1,117 @@
+# 🖼️ Easy NFT Market Place
+**GitHub Repository**: [github.com/Chujimafa/easy-NFT-Market-Place](https://github.com/Chujimafa/easy-NFT-Market-Place)
+
+A simple, ERC20-based NFT marketplace built using **Hardhat**, **Ethers.js v6**, and **React** frontend. It allows users to list, buy, and delist NFTs securely.
+
+> ⚠️ `TestPaymentToken` and `TestNft` contracts are **for testing purposes only** and **deployed only on the local Hardhat network**.
+
+---
+
+## 🚀 Features
+
+- ✅ List NFTs with ERC20 token pricing (e.g. USDC)
+- ✅ Buy NFTs using ERC20 tokens
+- ✅ Delist NFTs from the marketplace
+- ✅ React + Ethers.js v6 frontend
+- ✅ Complete unit test suite using Hardhat Network Helpers
+
+
+## 🧪 Test Contracts
+
+The following contracts are used **only for local testing** via the Hardhat Network:
+
+- `TestPaymentToken.sol` – an ERC20 token (mock)
+- `TestNft.sol` – a simple ERC721 contract for minting fake NFTs
+
+> These are only deployed on `localhost` using the `hardhat` network.
+
+---
+
+
+## 🧱 Deployment Info
+
+This project is deployed on both the **Sepolia testnet** and **locally** on the **Hardhat testnet**.
+
+
+### 📍 Sepolia Deployment
+
+- **NFTMarketPlace Contract address**: 0xFe0390184ff040CB2e9d7EF9922D67369d794484
+- **verified contract**  : https://sepolia.etherscan.io/address/0xFe0390184ff040CB2e9d7EF9922D67369d794484#code
+- **Payment Token**: Uses real USDC on Sepolia (`0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238`)
+- **Sepolia USDC Faucet**: https://faucet.circle.com/
+
+
+
+### 📍 Localhost Deployment
+
+When using `npx hardhat node`:
+**Marketplace Address**: `0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0` 
+
+- Deploys:
+  - `TestPaymentToken`
+  - `TestNft`
+  - `NFTMarketPlace` using `TestPaymentToken` as the payment currency
+
+
+
+## 🌐 Frontend - React DApp
+
+The React frontend is located at:
+src/components/DappNFTMarketplace.jsx
+
+It allows users to:
+
+- ✅ Connect MetaMask wallet  
+- ✅ List an NFT for sale (ERC721 approval + marketplace listing)  
+- ✅ Buy an NFT using ERC20 tokens  
+- ✅ Delist a previously listed NFT  
+
+Frontend automatically interacts with the smart contract at the **Sepolia testnet address** mentioned above.
+
+
+
+
+## ⚠️ Hardhat localhost Deployment Requirement
+
+To use the frontend:
+
+1. Start a local Hardhat node:
+   npx hardhat node
+
+2. Deploy contracts to the localhost network
+npx hardhat ignition deploy ignition/modules/DeployNFTMarketPlace.js --network localhost
+
+# 🧪 This will deploy TestPaymentToken, TestNft, and NFTMarketPlace to your local Hardhat node.
+
+```
+### ⚠️ Note:
+- `TestPaymentToken` and `TestNft` are **test contracts** and are only deployed on the `localhost` network.
+- On networks like `sepolia`, the deployment uses a real token like USDC instead of the test ERC20.
+
+
+After deploying, update your frontend with the **correct contract address**.
+
+
+3. Start the React frontend
+npm install
+npm start
+![alt text](image-1.png)
+![alt text](image.png)
+
+
+
+## 🔨 Run Tests
+
+```bash
+npx hardhat test
+
+### ✅ Test Summary
+
+Sample test results include:
+
+- ✔️ **Proper deployment of all contracts**
+- ✔️ **Only NFT owners can list NFTs**
+- ✔️ **Cannot list NFTs twice**
+- ✔️ **Correct ERC20 payment handling**
+- ✔️ **Ownership transfer on purchase**
+- ✔️ **Accurate delisting and error handling**
