@@ -95,8 +95,6 @@ After deploying, update your frontend with the **correct contract address**.
 3. Start the React frontend
 npm install
 npm start
-![wallet connect](./images/image-1.png)
-![Marketplace Interface](./images/image.png)
 
 
 ## 🔨 Run Tests
